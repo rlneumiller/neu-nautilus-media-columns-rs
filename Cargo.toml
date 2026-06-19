@@ -1,0 +1,15 @@
+[package]
+name = "nautilus4-media-columns-rs"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+nautilus4-extension = { path = "/home/arrel/gits/neu-nautilus-extension-rs/nautilus4-extension" }
+nautilus4-extension-sys = { path = "/home/arrel/gits/neu-nautilus-extension-rs/nautilus4-extension-sys" }
+gio-sys = "0.22.0"
+glib-sys = "0.22.6"
+gobject-sys = "0.22.6"
+libc = "0.2.186"
