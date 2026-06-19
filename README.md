@@ -1,5 +1,7 @@
 # Rust Nautilus Extension (Nautilus‑4, GTK4, Debian 13.5)
 
+This is a personal project to satisfy my requirements for my specific debian 13.5 system but may prove helpful to implement something similar.
+
 This repository contains a Rust-based Nautilus extension crate built as a native `.so` module for Nautilus 4 on Debian-like systems.
 
 The current implementation is a single crate with manual `GTypeModule` registration and a minimal `NautilusColumnProvider` implementation.
