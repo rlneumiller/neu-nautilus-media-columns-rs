@@ -26,8 +26,8 @@ static MEDIA_COLUMNS_TYPE: OnceLock<GType> = OnceLock::new();
 pub extern "C" fn nautilus_module_initialize(module: *mut GTypeModule) {
     let gtype = imp::register_type(module);
     // .set() rather than overwrite-on-reload: if Nautilus somehow called
-    // initialize twice without an intervening shutdown, we want a loud
-    // logic-error signal rather than silently rebinding to a new GType
+    // initialize twice without an intervening shutdown, we want to know 
+    // rather than silently rebinding to a new GType
     // while old instances (if any) still reference the first one.
     if MEDIA_COLUMNS_TYPE.set(gtype).is_err() {
         eprintln!(
@@ -38,8 +38,9 @@ pub extern "C" fn nautilus_module_initialize(module: *mut GTypeModule) {
 }
 
 /// Called once by Nautilus before unloading the module.
-/// We hold no heap allocations, open handles, or background threads that
-/// need explicit teardown, so this is a no-op -- but it must still exist
+/// We currently hold no heap allocations, open handles, 
+/// or background threads that need explicit teardown, 
+/// so this is a no-op -- but it must still exist
 /// with C linkage, since Nautilus calls it unconditionally.
 #[unsafe(no_mangle)]
 pub extern "C" fn nautilus_module_shutdown() {}
